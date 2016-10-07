@@ -1,6 +1,6 @@
 {
   "name": "ensue",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Function sequence (pipe) with nested arrays of sequences",
   "main": "dist/ensue.es5.js",
   "jsnext:main": "dist/ensue.js",
