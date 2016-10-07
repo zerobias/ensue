@@ -1,17 +1,17 @@
-const R = require('ramda')
-const tap = require('tap').test
+import R from 'ramda'
+import { test } from 'tap'
 
-const unit = require('./ensue')
+import unit from './ensue'
 
 const funcCompare = ref => func => R.converge(R.equals,[ref,func])
 
-tap('smoke test',function(t){
+test('smoke test',function(t){
   const isFunc = (obj,text) => t.is(R.is(Function,obj),true,text)
   isFunc(unit,'Pipefy exists')
   t.end()
 })
 
-tap('pipelining',function(t){
+test('pipelining',function(t){
   const steps = {
     a:R.when(R.equals(0),()=>10),
     b:R.add(10),
