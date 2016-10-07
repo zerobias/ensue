@@ -1,13 +1,16 @@
 {
   "name": "ensue",
   "version": "1.0.2",
-  "description": "",
+  "description": "Function sequence (pipe) with nested arrays of sequences",
   "main": "dist/ensue.es5.js",
   "jsnext:main": "dist/ensue.js",
   "scripts": {
     "test:tap": "tap ensue.test.js --nyc-arg=--require --nyc-arg=babel-polyfill --nyc-arg=--require --nyc-arg=babel-register --100",
     "test": "npm run test:tap",
-    "coverage": "nyc tap ensue.test.js --nyc-arg=--require --nyc-arg=babel-polyfill --nyc-arg=--require --nyc-arg=babel-register --100 --coverage-report=html",
+    "coverage:babel": "nyc tap ensue.test.js --nyc-arg=--require --nyc-arg=babel-polyfill --nyc-arg=--require --nyc-arg=babel-register --100 --coverage-report=html",
+    "coverage": "nyc -r=text -r=lcov npm test",
+    "precoveralls": "npm run coverage",
+    "coveralls": "coveralls < coverage/lcov.info",
     "transpile": "babel ensue.js --out-file ensue.es5.js",
     "clean": "rimraf ensue.es5.js & rimraf dist",
     "prepublish": "npm run build",
@@ -15,6 +18,15 @@
     "prebuild":"npm run transpile",
     "build": "rollup -c & rollup -c --environment BUILD:es5"
   },
+  "keywords":[
+    "fp",
+    "functional",
+    "ramda",
+    "pipeline",
+    "pipe",
+    "nested",
+    "sequence"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zerobias/ensue.git"

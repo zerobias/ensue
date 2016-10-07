@@ -1,5 +1,11 @@
 # ensue
 
+[![NPM version][npm-image]][npm-url]
+[![Unix Build Status][travis-image]][travis-url]
+[![Windows Build Status][appveyor-image]][appveyor-url]
+[![Coveralls Status][coveralls-image]][coveralls-url]
+[![Dependency Status][depstat-image]][depstat-url]
+
 Ensue performs left-to-right function composition and works like the pipe operator more common in functional programming languages.
 This lib supports nested array of pipes
 
@@ -54,3 +60,18 @@ let fullAction = getFullAction(userFilter)
 ## License
 
 MIT © [Zero Bias](https://github.com/zerobias)
+
+[npm-url]: https://npmjs.org/package/ensue
+[npm-image]: https://img.shields.io/npm/v/ensue.svg?style=flat-square
+
+[travis-url]: https://travis-ci.org/zerobias/ensue
+[travis-image]: https://img.shields.io/travis/zerobias/ensue.svg?style=flat-square&label=unix
+
+[appveyor-url]: https://ci.appveyor.com/project/zerobias/ensue
+[appveyor-image]: https://img.shields.io/appveyor/ci/zerobias/ensue.svg?style=flat-square&label=windows
+
+[coveralls-url]: https://coveralls.io/r/zerobias/ensue
+[coveralls-image]: https://img.shields.io/coveralls/zerobias/ensue.svg?style=flat-square
+
+[depstat-url]: https://david-dm.org/zerobias/ensue
+[depstat-image]: https://david-dm.org/zerobias/ensue.svg?style=flat-square
