@@ -1,6 +1,6 @@
 {
   "name": "ensue",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Function sequence (pipe) with nested arrays of sequences",
   "main": "dist/ensue.es5.js",
   "jsnext:main": "dist/ensue.js",
@@ -11,14 +11,14 @@
     "coverage": "nyc -r=text -r=lcov npm test",
     "precoveralls": "npm run coverage",
     "coveralls": "coveralls < coverage/lcov.info",
-    "transpile": "babel ensue.js --out-file ensue.es5.js",
+    "transpile": "node_modules/.bin/babel ensue.js --out-file ensue.es5.js",
     "clean": "rimraf ensue.es5.js & rimraf dist",
     "prepublish": "npm run build",
     "postpublish": "npm run clean",
-    "prebuild":"npm run transpile",
+    "prebuild": "npm run transpile",
     "build": "rollup -c & rollup -c --environment BUILD:es5"
   },
-  "keywords":[
+  "keywords": [
     "fp",
     "functional",
     "ramda",
@@ -37,6 +37,11 @@
     "ramda": "^0.22.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-register": "^6.16.3",
     "nyc": "^8.3.0",
     "rollup": "^0.36.1",
     "rollup-plugin-cleanup": "^0.1.4",
