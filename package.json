@@ -1,0 +1,22 @@
+{
+  "name": "ensue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ensue.js",
+  "scripts": {
+    "test": "nyc tap ensue.test.js --100 --coverage-report=html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zerobias/ensue.git"
+  },
+  "author": "Zero Bias",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.22.1"
+  },
+  "devDependencies": {
+    "nyc": "^8.3.0",
+    "tap": "^7.1.2"
+  }
+}

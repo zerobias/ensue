@@ -1,0 +1,32 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 5,
+    "ecmaFeatures": {}
+  },
+  "extends": [
+    "standard",
+    "eslint:recommended"
+  ],
+  "plugins": [],
+  "env": {
+    "browser" : true
+  },
+  "rules": {
+    "key-spacing"          : 0,
+    "no-console"           : 0,
+    "no-extra-semi"        : 2,
+    "indent"               : [1,2,{
+      "VariableDeclarator" : {
+        "var": 2,
+        "let": 2,
+        "const": 3 },
+      "FunctionDeclaration": {
+        "parameters": "first"},
+      "FunctionExpression": {
+        "parameters": "first"},
+      "MemberExpression": 1,
+      "SwitchCase": 1}],
+    "max-len"              : [2, 120, 2],
+    "object-curly-spacing" : [2, "always"]
+  }
+}
