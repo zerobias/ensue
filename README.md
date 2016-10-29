@@ -6,8 +6,22 @@
 [![Coveralls Status][coveralls-image]][coveralls-url]
 [![Dependency Status][depstat-image]][depstat-url]
 
-Ensue performs left-to-right function composition and works like the pipe operator more common in functional programming languages.
-This lib supports nested array of pipes
+**Ensue** performs left-to-right function composition and works like the pipe operator more common in functional programming languages.
+
+Ensue turns
+> const seo = data => c(b(a(data)))
+
+into linear form
+>seq=P( a, b, c )
+
+>seq( data )
+
+or even array for steps
+>seq=[ a, b, c ]
+
+>ensue( seq )( data )
+
+Also lib supports nested array of pipes, so you can describe your sequences as simple function lists
 
 ## Install
 
@@ -15,46 +29,42 @@ This lib supports nested array of pipes
 
 ## Usage
 
+Lets write some short sequences
+
 ```js
 import E from 'ensue'
 import R from 'ramda'
 
-const pipes = {
-  //lazy pipeline, will render only when needed
-  action: [
-    R.pluck('payload'),
-    R.reject(R.isNil)
-  ],
-  selectYear: R.when(
-    R.all(R.has('year')),
-    R.pluck('year'))
-  object: [
-    R.filter(R.is(Number))
-    R.map(R.defaultTo(0))
-  ]
+//Simple validation
+const hasStringId = [
+  R.propOr(null,'id'),
+  R.is(String)
+]
+//Another sequence: selector
+const getUsers = [
+  R.prop('users'),
+  R.values,
+  R.reject( R.has('inactive') )
+]
+```
+
+Now we can use composition to get new sequences
+
+```js
+const checkLastId = [
+  getUsers,
+  R.last,
+  hasStringId
+]
+
+//Make native function with ensue
+const validator = P(checkLastId)
+
+function stateToProps(state) {
+  return {
+    flag: validator(store)
+  }
 }
-
-//typical pipeline, immediately render
-const userFilter = E(R.filter(e=>e===18),R.length)
-
-//transparent combination of pipelines
-const getFullAction = pipe=>E([
-  pipes.action,
-  pipes.selectYear,
-  pipes.object,
-  pipe])
-let fullAction = getFullAction(userFilter)
-// => R.pipe([
-//      R.pluck('payload'),
-//      R.reject(R.isNil),
-//      R.when(
-//        R.all(R.has('year')),
-//        R.pluck('year')),
-//      R.filter(R.is(Number)),
-//      R.map(R.defaultTo(0)),
-//      R.filter(e=>e===18),
-//      R.length
-//  ]
 ```
 
 ## License

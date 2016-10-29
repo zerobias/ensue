@@ -1,7 +1,8 @@
-import R from 'ramda'
-import { test } from 'tap'
+"use strict";
+const R = require('ramda')
+const test = require('tap').test
 
-import unit from './ensue'
+const unit = require('./lib/index')
 
 const funcCompare = ref => func => R.converge(R.equals,[ref,func])
 

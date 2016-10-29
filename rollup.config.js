@@ -1,56 +1,45 @@
 import commonjs from 'rollup-plugin-commonjs'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import cleanup from 'rollup-plugin-cleanup'
-import uglify from 'rollup-plugin-uglify'
-import { minify } from 'uglify-js'
+// import uglify from 'rollup-plugin-uglify'
+// import { minify } from 'uglify-js'
 
 let pkg = require('./package.json')
 let external = Object.keys(pkg.dependencies)
 
-const isES5Build = process.env.BUILD === 'es5'
+const isUmd = process.env.BUILD === 'umd'
 
-const targets = {
-  es5:[{
-    dest: pkg['main'],
-    format: 'umd',
-    moduleName: 'ensue',
-    sourceMap: true
-  }],
-  esnext:[{
-    dest: pkg['jsnext:main'],
-    format: 'umd',
-    moduleName: 'ensue',
-    sourceMap: true
-  }]
+const builds = {
+  cmj : pkg.main,
+  es  : pkg.module,
+  umd : pkg.browser
 }
 
+const target = [{
+  dest: isUmd?builds.umd:builds.cmj,
+  format: isUmd?'umd':'cjs',
+  moduleName: 'ensue',
+  sourceMap: true
+}]
+const plugins = [
+  cleanup(),
+  nodeResolve({
+    jsnext: true,
+    main: false,
+    module: true,
+    skip: true,
+    preferBuiltins: false
+  }),
+  commonjs({
+    include: ['src/index.js']
+  })
+]
 export default {
-  entry:isES5Build
-        ? 'ensue.es5.js'
-        : 'ensue.js',
+  entry:'es/index.js',
   globals: {
     "ramda": "R"
   },
-  plugins: [
-    cleanup(),
-    nodeResolve({
-      jsnext: true,
-      main: false,
-      module: true,
-      skip: true,
-      preferBuiltins: false
-    }),
-    commonjs({
-      include: [isES5Build
-        ? 'ensue.es5.js'
-        : 'ensue.js']
-    }),
-    isES5Build
-      ? uglify({}, minify)
-      :''
-  ],
+  plugins: plugins,
   external: external,
-  targets: isES5Build
-    ? targets.es5
-    : targets.esnext
+  targets: target
 }
