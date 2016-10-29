@@ -9,15 +9,15 @@
 **Ensue** performs left-to-right function composition and works like the pipe operator more common in functional programming languages.
 
 Ensue turns
->  const seo = data => c(b(a(data)))
+> const seo = data => c(b(a(data)))
 
 into linear form
->  seq=P( a, b, c )
->  seq( data )
+> seq=P( a, b, c )
+  seq( data )
 
 or even array for steps
->  seq=[ a, b, c ]
->  ensue( seq )( data )
+> seq=[ a, b, c ]
+  ensue( seq )( data )
 
 Also lib supports nested array of pipes, so you can describe your sequences as simple function lists
 
@@ -27,13 +27,13 @@ Also lib supports nested array of pipes, so you can describe your sequences as s
 
 ## Usage
 
+Lets write some short sequences
+
 ```js
 import E from 'ensue'
 import R from 'ramda'
 
-//Lets write easy short sequence
-
-//Simple action: validation
+//Simple validation
 const hasStringId = [
   R.propOr(null,'id'),
   R.is(String)
@@ -44,9 +44,11 @@ const getUsers = [
   R.values,
   R.reject( R.has('inactive') )
 ]
+```
 
+Now we can use composition to get new sequences
 
-//And now we can use composition for new sequences
+```js
 const checkLastId = [
   getUsers,
   R.last,
