@@ -18,13 +18,13 @@
     "build:cjs": "rollup -c",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:umd": "rollup -c --environment BUILD:umd",
-    "build": "npm run build:cjs && npm run build:umd"
+    "build": "npm run build:cjs && npm run build:umd && npm run build:es"
   },
   "files": [
     "dist",
     "lib",
     "es",
-    "ensue.js"
+    "src/index.js"
   ],
   "keywords": [
     "fp",
