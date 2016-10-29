@@ -13,10 +13,12 @@ Ensue turns
 
 into linear form
 >seq=P( a, b, c )
+
 >seq( data )
 
 or even array for steps
 >seq=[ a, b, c ]
+
 >ensue( seq )( data )
 
 Also lib supports nested array of pipes, so you can describe your sequences as simple function lists
