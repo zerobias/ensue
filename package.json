@@ -1,6 +1,6 @@
 {
   "name": "ensue",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Function sequence (pipe) with nested arrays of sequences",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
@@ -18,7 +18,7 @@
     "build:cjs": "rollup -c",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:umd": "rollup -c --environment BUILD:umd",
-    "build": "npm run build:cjs && npm run build:umd && npm run build:es"
+    "build": "npm run build:es && npm run build:cjs && npm run build:umd"
   },
   "files": [
     "dist",
