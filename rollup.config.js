@@ -35,7 +35,7 @@ const plugins = [
   })
 ]
 export default {
-  entry:'src/index.js',
+  entry:'es/index.js',
   globals: {
     "ramda": "R"
   },
