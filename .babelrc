@@ -1,8 +1,6 @@
 {
-  "presets": [
-    "es2015"
-  ],
   "plugins": [
-    "add-module-exports"
+    "transform-es2015-block-scoping",
+    "transform-es2015-parameters"
   ]
 }
