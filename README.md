@@ -12,12 +12,12 @@ Ensue turns
 > const seo = data => c(b(a(data)))
 
 into linear form
-> seq=P( a, b, c )
-  seq( data )
+>seq=P( a, b, c )
+>seq( data )
 
 or even array for steps
-> seq=[ a, b, c ]
-  ensue( seq )( data )
+>seq=[ a, b, c ]
+>ensue( seq )( data )
 
 Also lib supports nested array of pipes, so you can describe your sequences as simple function lists
 
