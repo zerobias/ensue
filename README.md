@@ -6,7 +6,7 @@
 [![Coveralls Status][coveralls-image]][coveralls-url]
 [![Dependency Status][depstat-image]][depstat-url]
 
-**Ensue** performs left-to-right function composition and works like the pipe operator more common in functional programming languages.
+**Ensue** performs left-to-right function composition and works like the pipe operator, more common in functional programming languages.
 
 Ensue turns
 > const seo = data => c(b(a(data)))
@@ -29,7 +29,7 @@ Also lib supports nested array of pipes, so you can describe your sequences as s
 
 ## Usage
 
-Lets write some short sequences
+Let's write some short sequences
 
 ```js
 import E from 'ensue'
