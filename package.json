@@ -7,7 +7,7 @@
   "module": "es/index.js",
   "browser": "dist/index.js",
   "scripts": {
-    "pretest": "npm run build:cjs",
+    "pretest": "npm run build:cjs:umd",
     "test": "tap ensue.test.js --100",
     "coverage:html": "nyc --coverage-report=html npm test",
     "coverage": "nyc -r=text -r=lcov tap ensue.test.js",
@@ -15,10 +15,9 @@
     "clean": "rimraf es & rimraf lib & rimraf dist",
     "prepublish": "npm run build",
     "postpublish": "npm run clean",
-    "build:cjs": "rollup -c",
+    "build:cjs:umd": "rollup -c",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:umd": "rollup -c --environment BUILD:umd",
-    "build": "npm run build:es && npm run build:cjs && npm run build:umd"
+    "build": "npm run build:es && npm run build:cjs:umd"
   },
   "files": [
     "dist",
@@ -42,7 +41,7 @@
   "author": "Zero Bias",
   "license": "MIT",
   "dependencies": {
-    "ramda": "^0.22.1"
+    "array-flatten": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
@@ -51,6 +50,7 @@
     "coveralls": "^2.11.14",
     "cross-env": "^3.1.3",
     "nyc": "^8.3.0",
+    "ramda": "^0.22.1",
     "rollup": "^0.36.1",
     "rollup-plugin-cleanup": "^0.1.4",
     "rollup-plugin-commonjs": "^5.0.4",
