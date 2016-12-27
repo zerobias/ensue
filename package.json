@@ -1,13 +1,10 @@
 {
   "name": "ensue",
-  "version": "1.1.1",
+  "version": "2.0.1",
   "description": "Function sequence (pipe) with nested arrays of sequences",
-  "main": "lib/index.js",
-  "jsnext:main": "es/index.js",
-  "module": "es/index.js",
+  "main": "src/index.js",
   "browser": "dist/index.js",
   "scripts": {
-    "pretest": "npm run build:cjs:umd",
     "test": "tap ensue.test.js --100",
     "coverage:html": "nyc --coverage-report=html npm test",
     "coverage": "nyc -r=text -r=lcov tap ensue.test.js",
@@ -15,15 +12,13 @@
     "clean": "rimraf es & rimraf lib & rimraf dist",
     "prepublish": "npm run build",
     "postpublish": "npm run clean",
-    "build:cjs:umd": "rollup -c",
+    "build:umd": "rollup -c",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build": "npm run build:es && npm run build:cjs:umd"
+    "build": "npm run build:umd"
   },
   "files": [
-    "dist",
-    "lib",
-    "es",
-    "src/index.js"
+    "src/index.js",
+    "dist/index.js"
   ],
   "keywords": [
     "fp",

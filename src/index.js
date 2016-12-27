@@ -1,5 +1,6 @@
-import flatten from 'array-flatten'
+'use strict'
 
+const flatten = require('array-flatten')
 const cReducer = (res, func) => func(res)
 
 const subSwitch = (funcs, args) => {
@@ -31,14 +32,24 @@ const subSwitch = (funcs, args) => {
   }
 }
 
-export const pipe = (...funcs) => {
+const split = list => {
+  const groups = Math.ceil(list.length / 10)
+  const pack = Array(groups)
+  for (let i = 0, bias = 0; i < groups; i++, bias = i * 10)
+    pack[i] = list.slice(bias, bias + 10)
+  return pack
+}
+
+const pipe = (...funcs) => {
   const flat = flatten(funcs)
   return (...args) => subSwitch(flat, args)
 }
 
-export const compose = (...funcs) => {
+const compose = (...funcs) => {
   const flat = flatten(funcs).reverse()
   return (...args) => subSwitch(flat, args)
 }
 
-export default pipe
+exports.pipe = pipe
+exports.compose = compose
+module.exports = pipe

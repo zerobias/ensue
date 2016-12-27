@@ -15,18 +15,23 @@ const builds = {
   umd: pkg.browser
 }
 
-const target = [{
-  dest      : builds.cjs,
-  format    : 'cjs',
-  moduleName: 'ensue',
-  sourceMap : true,
-  preferConst: true
-}, {
-  dest      : builds.umd,
-  format    : 'umd',
-  moduleName: 'ensue',
-  sourceMap : 'inline'
-}]
+const targets = {
+  commonjs: {
+    dest       : builds.cjs, //WARN~! Overwrite source file!
+    format     : 'cjs',
+    moduleName : 'ensue',
+    sourceMap  : true,
+    preferConst: true
+  },
+  umd: {
+    dest      : builds.umd,
+    format    : 'umd',
+    moduleName: 'ensue',
+    sourceMap : 'inline'
+  }
+}
+
+const target = [ targets.umd ]
 const plugins = [
   cleanup(),
   nodeResolve({
@@ -41,7 +46,7 @@ const plugins = [
   })
 ]
 export default {
-  entry  : 'es/index.js',
+  entry  : 'src/index.js',
   globals: {
     'array-flatten': 'flatten'
   },

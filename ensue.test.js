@@ -2,7 +2,7 @@
 const R = require('ramda')
 const test = require('tap').test
 
-const unit = require('./lib/index')
+const unit = require('./src/index')
 
 const funcCompare = ref => func => R.converge(R.equals, [ref, func])
 
