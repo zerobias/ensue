@@ -1,6 +1,6 @@
 {
   "name": "ensue",
-  "version": "2.0.1",
+  "version": "2.0.1-beta.0",
   "description": "Function sequence (pipe) with nested arrays of sequences",
   "main": "src/index.js",
   "browser": "dist/index.js",
