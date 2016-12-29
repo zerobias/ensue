@@ -10,5 +10,5 @@ dist
 es
 lib
 .coveralls.yml
-
+typings.json
 .idea/
