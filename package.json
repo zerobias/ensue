@@ -1,6 +1,6 @@
 {
   "name": "ensue",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Function sequence (pipe) with nested arrays of sequences",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
@@ -42,7 +42,7 @@
   "author": "Zero Bias",
   "license": "MIT",
   "dependencies": {
-    "ramda": "^0.22.1"
+    "ramda": "^0.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",

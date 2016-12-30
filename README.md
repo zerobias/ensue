@@ -58,7 +58,7 @@ const checkLastId = [
 ]
 
 //Make native function with ensue
-const validator = P(checkLastId)
+const validator = E(checkLastId)
 
 function stateToProps(state) {
   return {
